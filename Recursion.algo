@@ -1,0 +1,35 @@
+FUNCTION palin(mot:STRING ; x:integer) : STRING
+VAR 
+    results : STRING;
+    i:= 0: INTEGER;
+BEGIN
+    
+    IF (x=0) THEN
+        results := "palindrom"; //  condition d'arret si le mot est palindrom
+
+    ELSE IF (mot[i]=mot[x]) THEN
+        i:=i+1;
+        results := palin(mot(i+1),x-i) // appel a la fonction palin
+    ELSE IF (mot[i]<>mot[x]) THEN
+
+        results := "pas palindrom"   // condition d'arret on cas de difference 
+    END_IF
+    RETURN results ;
+END
+
+ALGORITHM palindrom
+VAR
+    mot,resultat : string;
+    x:integer;
+BEGIN
+// la longeur du mot doit etre obligatoire sup a zéro
+REPEAT
+    read(mot);
+UNTIL (lenght.mot>0)
+
+    x:=lenght.mot-1 // x va etre la longeur du mot 
+// appel a la fontion palindrom
+    resultat:=palin(mot,x);
+// affichage du resultat
+    write("votre mot est ",resultat);
+END
